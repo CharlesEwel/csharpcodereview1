@@ -8,13 +8,10 @@ namespace ContactBook
   {
     public HomeModule()
     {
-      Get["/"] = _ => {
-          return View["index.cshtml"];
-      };
-      Get["/addcontact"] = _ => {
-          return View["add_contact.cshtml"];
-      };
-      Post["/new_contact"] = _ =>{
+      Get["/"] = _ => View["index.cshtml"];
+      Get["/addcontact"] = _ => View["add_contact.cshtml"];
+      Post["/new_contact"] = _ =>
+      {
         // List<Artist> allArtists = Artist.GetAllArtists();
         // int artistIndex=-1;
         // if (allArtists.Count > 0)
@@ -34,7 +31,12 @@ namespace ContactBook
         //   return View["artist_details.cshtml", newArtist];
         // }
         Contact newContact = new Contact(Request.Form["new-first-name"], Request.Form["new-last-name"]);
-          return View ["contact_details.cshtml", newContact];
+          return View["contact_details.cshtml", newContact];
+      };
+      Post["/contacts_deleted"] = _ =>
+      {
+        Contact.ClearContacts();
+        return View["contacts_deleted.cshtml"];
       };
       Get["/{detailsContact}"] = parameters => {
         List<Contact> allContacts = Contact.GetAllContacts();

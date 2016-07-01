@@ -30,6 +30,10 @@ namespace ContactVariables.Objects
     {
       return _contacts;
     }
+    public static void ClearContacts()
+    {
+      _contacts.Clear();
+    }
     public static int Find(string searchContactName)
     {
       int counter=0;
