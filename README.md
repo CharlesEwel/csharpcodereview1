@@ -22,7 +22,8 @@ The program should handle: | Example Input | Example Output
 ----- | ----- | -----
 Add A Contact | First Name: Goober Last Name: Newton | Appends Newton, Goober to a list of contact
 Contact Details Page | User clicks Goober, Newton on contactlist | Taken to localhost:5004/contacts/goobernewton, which displays details about the goober newton contact
-Contact Deletion | User pressed "clear all contacts" button | contact list is cleared and user is taken to a a page confirming this
+Contact Deletion | User pressed "clear all contacts" button | contact list is cleared and user is taken to a page confirming this
+Duplicate Contacts| User enters a contact with a first and last name that matches an existing contact | user is sent to contact_exists_already page and asked to go back or visit the contact details page for the existing contact
 
 
 ## Technologies Used
