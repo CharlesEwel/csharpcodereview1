@@ -12,29 +12,25 @@ namespace ContactBook
       Get["/addcontact"] = _ => View["add_contact.cshtml"];
       Post["/new_contact"] = _ =>
       {
-        // List<Artist> allArtists = Artist.GetAllArtists();
-        // int artistIndex=-1;
-        // if (allArtists.Count > 0)
-        // {
-        //   artistIndex = Artist.Find(Request.Form["new-artist"]);
-        // }
-        // if (artistIndex == -1)
-        // {
-        //   Artist newArtist = new Artist(Request.Form["new-artist"]);
-        //   newArtist.AddAlbum(Request.Form["new-album"]);
-        //   return View["artist_details.cshtml", newArtist];
-        // }
-        // else
-        // {
-        //   Artist newArtist = allArtists[artistIndex];
-        //   newArtist.AddAlbum(Request.Form["new-album"]);
-        //   return View["artist_details.cshtml", newArtist];
-        // }
-        Contact newContact = new Contact(Request.Form["new-first-name"],
-                                        Request.Form["new-last-name"],
-                                        Request.Form["new-address"],
-                                        Request.Form["new-phone-number"]);
-        return View["contact_created.cshtml", newContact];
+        List<Contact> allContacts = Contact.GetAllContacts();
+        int contactIndex=-1;
+        string newFullName = (Request.Form["new-first-name"])+" "+(Request.Form["new-last-name"]);
+        if (allContacts.Count > 0)
+        {
+          contactIndex = Contact.Find(newFullName);
+        }
+        if (contactIndex == -1)
+        {
+          Contact newContact = new Contact(Request.Form["new-first-name"],
+                                          Request.Form["new-last-name"],
+                                          Request.Form["new-address"],
+                                          Request.Form["new-phone-number"]);
+          return View["contact_created.cshtml", newContact];
+        }
+        else
+        {
+          return View["contact_exists_already.cshtml", newFullName];
+        }
       };
       Post["/contacts_deleted"] = _ =>
       {
