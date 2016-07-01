@@ -20,7 +20,7 @@ This webapp allows users to post contacts to a list, then view them all.
 The program should handle: | Example Input | Example Output
 ----- | ----- | -----
 Add A Contact | First Name: Goober Last Name: Newton | Appends Newton, Goober to a list of contact
-Contact Details Page |User clicks Goober, Newton on contactlist | Taken to localhost:5004/contacts/goobernewton, which displays details about the goober newton contact
+Contact Details Page | User clicks Goober, Newton on contactlist | Taken to localhost:5004/contacts/goobernewton, which displays details about the goober newton contact
 
 
 ## Technologies Used

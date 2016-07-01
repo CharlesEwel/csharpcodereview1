@@ -2,14 +2,29 @@
 <html>
   <head>
     <meta charset="utf-8">
+    @using System.Collections.Generic;
+    @using System;
     <title>Contacts</title>
   </head>
   <body>
+    @{
+      Dictionary<string, string> fullNames = new Dictionary<string, string>(){};
+      List<string> alphabetizedList = new List<string>{};
+      foreach(var contact in Model)
+      {
+        fullNames.Add(contact.GetLastName() + ", " + @contact.GetFirstName(), contact.GetFullName());
+      }
+      foreach(var contact in Model)
+      {
+        alphabetizedList.Add(contact.GetLastName() + ", " + @contact.GetFirstName());
+      }
+	    alphabetizedList.Sort();
+    }
     <h1>Contact List</h1>
     <ul>
-      @foreach(var contact in Model)
+      @foreach(string key in alphabetizedList)
       {
-        <li>@contact.GetLastName(), @contact.GetFirstName()</li>
+        <li><a href="/@fullNames[key]">@key</a></li>
       }
     </ul>
     <a href="/">Home</a>
