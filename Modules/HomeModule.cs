@@ -30,8 +30,11 @@ namespace ContactBook
         //   newArtist.AddAlbum(Request.Form["new-album"]);
         //   return View["artist_details.cshtml", newArtist];
         // }
-        Contact newContact = new Contact(Request.Form["new-first-name"], Request.Form["new-last-name"]);
-          return View["contact_details.cshtml", newContact];
+        Contact newContact = new Contact(Request.Form["new-first-name"],
+                                        Request.Form["new-last-name"],
+                                        Request.Form["new-address"],
+                                        Request.Form["new-phone-number"]);
+        return View["contact_created.cshtml", newContact];
       };
       Post["/contacts_deleted"] = _ =>
       {

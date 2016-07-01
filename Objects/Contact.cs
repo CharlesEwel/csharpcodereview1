@@ -6,11 +6,15 @@ namespace ContactVariables.Objects
   {
     private string _firstName;
     private string _lastName;
+    private string _address;
+    private string _phoneNumber;
     private static List<Contact> _contacts = new List<Contact> {};
-    public Contact (string newFirstName, string newLastName)
+    public Contact (string newFirstName, string newLastName, string newAddress, string newPhoneNumber)
     {
       _firstName = newFirstName;
       _lastName = newLastName;
+      _address = newAddress;
+      _phoneNumber= newPhoneNumber;
       _contacts.Add(this);
     }
     public string GetFirstName()
@@ -20,6 +24,14 @@ namespace ContactVariables.Objects
     public string GetLastName()
     {
       return _lastName;
+    }
+    public string GetAddress()
+    {
+      return _address;
+    }
+    public string GetPhoneNumber()
+    {
+      return _phoneNumber;
     }
     public string GetFullName()
     {
